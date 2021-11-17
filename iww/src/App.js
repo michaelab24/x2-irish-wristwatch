@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import About from './components/About/About';
+import Nav from './components/Nav/Nav';
+// import Music from './components/Music/Music';
 
 function App() {
+  const [categories] = useState([
+    {
+      name: 'Music',
+      description: 'Listen',
+    },
+    // { name: 'portraits', description: 'Portraits of animals in my life' },
+    // { name: 'food', description: 'Delicious delicacies' },
+    // { name: 'landscape', description: 'Fields, farmhouses, waterfalls, and the beauty of nature' },
+  ]);
+
+  const [currentCategory, setCurrentCategory] = useState(categories[0]);
+
+  const [contactSelected, setContactSelected] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Nav
+        categories={categories}
+        setCurrentCategory={setCurrentCategory}
+        currentCategory={currentCategory}
+        contactSelected={contactSelected}
+        setContactSelected={setContactSelected}
+      ></Nav>
+      <main>
+          <>
+            <About></About>
+            {/* <Music></Music> */}
+          </>
+      </main>
     </div>
   );
 }
 
 export default App;
+
+  
